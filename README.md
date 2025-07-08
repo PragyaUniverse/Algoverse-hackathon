@@ -13,7 +13,6 @@ A smart, gamified carbon tracking web app that helps users visualize and reduce 
 - [🧠 How We Calculate Emissions](#-how-we-calculate-emissions)
 - [🧰 Tech Stack](#-tech-stack)
 - [🚀 Getting Started](#-getting-started)
-- [📸 Screenshots](#-screenshots)
 
 ## 📖 ABOUT
 The Problem: Carbon is Invisible
