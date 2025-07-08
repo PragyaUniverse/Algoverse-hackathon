@@ -48,10 +48,6 @@ The Problem: Carbon is Invisible
   on user dashboards
 - Data collected via manual inputs (travel, food) and receipt OCR
   (Zomato, Flipkart)
- - Uses verified sources:
-  • India GHG Program
-  • IPCC
-  • UK DEFRA
 
 ---
 
@@ -69,11 +65,6 @@ The Problem: Carbon is Invisible
 ---
 ## 🚀 Getting Started
 
-### For Users:
-
-> 👉 Just open [https://lowkeycarbon.app](https://lowkeycarbon.app) in your browser.  
-> No install needed!
-
 ### For Developers:
 
 ```bash
@@ -90,6 +81,9 @@ flask run
 
 # Open frontend (if separate)
 npm start
+
+
+sed -i '/^Key File:/,$d' README.md
 
 The repository includes all core HTML files that demonstrate the primary features of our platform. This prototype is built to simulate functionality and layout using placeholder data, with real-time integration planned in the next phase.
 
