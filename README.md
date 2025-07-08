@@ -31,9 +31,11 @@ The Problem: Carbon is Invisible
 
 - ✍️ **Input Tracker** – Log daily travel, food, electricity use  
 - 📸 **Receipt Scanner** – Scan Zomato, Flipkart, etc., and auto-calculate CO₂ (Launching Soon!)
-- 📊 **CO₂ Dashboard** – Visualize emissions over time  
+- 📊 **CO₂ Dashboard** – Visualize emissions over time
+   We’ve built a demo dashboard to showcase the core features and user experience of our platform. Currently, it displays randomly generated data to simulate real user interactions. In the next phase, it        will be integrated with our carbon calculator to display accurate, personalized carbon footprint statistics for each user.
 - 🏆 **Gamification** – Earn eco-habit badges & streaks (Launching Soon!)
-- 🤖 **Eco-Bot** – Chatbot tips & interactive tracking (Launching Soon!) 
+- 🤖 **Eco-Bot** – Chatbot tips & interactive tracking
+  We've built a demo of Eco-Bot using JavaScript. In the next phase, we'll be launching Eco Bot using Python+ML usage (LLM)
 - 📚 **Story Mode** – Learn sustainability via interactive storytelling (Launching Soon!)
 
 ---
@@ -89,6 +91,9 @@ flask run
 # Open frontend (if separate)
 npm start
 
+The repository includes all core HTML files that demonstrate the primary features of our platform. This prototype is built to simulate functionality and layout using placeholder data, with real-time integration planned in the next phase.
 
+Key File: core_features.html
+This is the main file that showcases the central functionality of the platform dashboard 
 
-
+carbon_calculator.html – Interactive carbon calculator where users can input data to estimate their emissions.
