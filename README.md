@@ -30,11 +30,11 @@ The Problem: Carbon is Invisible
 ## ✨ FEATURES
 
 - ✍️ **Input Tracker** – Log daily travel, food, electricity use  
-- 📸 **Receipt Scanner** – Scan Zomato, Flipkart, etc., and auto-calculate CO₂  
+- 📸 **Receipt Scanner** – Scan Zomato, Flipkart, etc., and auto-calculate CO₂ (Launching Soon!)
 - 📊 **CO₂ Dashboard** – Visualize emissions over time  
-- 🏆 **Gamification** – Earn eco-habit badges & streaks  
-- 🤖 **Eco-Bot** – Chatbot tips & interactive tracking  
-- 📚 **Story Mode** – Learn sustainability via interactive storytelling  
+- 🏆 **Gamification** – Earn eco-habit badges & streaks (Launching Soon!)
+- 🤖 **Eco-Bot** – Chatbot tips & interactive tracking (Launching Soon!) 
+- 📚 **Story Mode** – Learn sustainability via interactive storytelling (Launching Soon!)
 
 ---
 
