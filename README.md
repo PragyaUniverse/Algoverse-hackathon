@@ -18,10 +18,10 @@ A smart, gamified carbon tracking web app that helps users visualize and reduce 
 The Problem: Carbon is Invisible
  Despite rising climate awareness, most individuals don’t realize how their daily choices affect the planet — especially in
  India, where personal carbon tracking tools are scarce.
- 🔍 Lack of Awareness: Less than 15% know their own carbon footprint
- 🌆 Hidden Emissions: Urban individuals emit over 500 kg CO₂/month without realizing it
- 🛒 Everyday Drivers: AC usage, Zomato orders, Flipkart shopping — all contribute
- 📉 No Clear Feedback: People can't change what they can't measure
+ - 🔍 Lack of Awareness: Less than 15% know their own carbon footprint
+ - 🌆 Hidden Emissions: Urban individuals emit over 500 kg CO₂/month without realizing it
+ - 🛒 Everyday Drivers: AC usage, Zomato orders, Flipkart shopping — all contribute
+ - 📉 No Clear Feedback: People can't change what they can't measure
 
 **LowkeyCarbon** solves this with a simple, interactive platform that tracks your carbon footprint and helps reduce it through **smart inputs, visual feedback**, and **gamified learning**.
 
