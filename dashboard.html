@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LowKeyCarbon | Dashboard</title>
+   <link rel="icon" href="icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f3fff3;
+      color: #222;
+      padding: 20px;
+    }
+    header {
+      background-color: #004d40;
+      color: white;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+    }
+    .score {
+      background: #c8e6c9;
+      padding: 30px;
+      border-radius: 12px;
+      margin-top: 20px;
+      text-align: center;
+    }
+    .score h2 {
+      font-size: 2rem;
+      color: #2e7d32;
+    }
+    .bar-chart {
+      margin: 30px auto;
+      max-width: 600px;
+      height: 300px;
+    }
+    .tips {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-top: 20px;
+    }
+    .tips h3 {
+      color: #00796b;
+    }
+    footer {
+      margin-top: 30px;
+      text-align: center;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Welcome Back to LowKeyCarbon</h1>
+  <p>Your Personalized Carbon Dashboard</p>
+</header>
+
+<div class="score">
+  <h2>52.4 kg CO₂</h2>
+  <p>Your total carbon footprint this week</p>
+</div>
+
+<canvas id="barChart" class="bar-chart"></canvas>
+
+<div class="tips">
+  <h3>🌿 Tips to Lower Your Carbon Footprint:</h3>
+  <ul>
+    <li>Try public transport twice this week – saves ~3 kg CO₂</li>
+    <li>Switch off unused appliances – saves energy instantly</li>
+    <li>Eat one vegetarian meal daily – cuts 2.5 kg CO₂/week</li>
+  </ul>
+</div>
+
+<footer>
+  ©️ 2025 LowKeyCarbon | Team codeCosmos | AlgoVerse Hackathon
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const ctx = document.getElementById('barChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+      datasets: [{
+        label: 'Daily Emissions (kg CO₂)',
+        data: [6.2, 7.8, 6.0, 5.3, 6.5, 8.0, 12.6],
+        backgroundColor: '#66bb6a'
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: { stepSize: 2 }
+        }
+      }
+    }
+  });
+</script>
+
+</body>
+</html>

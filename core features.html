@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LowkeyCarbon - Chill habits, Low footprints</title>
+  <link rel="icon" href="icon.jpeg">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #d9f99d, #a7e9af, #56c596);
+      color: #333;
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section {
+      flex: 1;
+      min-width: 600px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .card h3 {
+      color: #00796b;
+    }
+
+    /* Chatbot Styles */
+    .chatbot {
+      width: 300px;
+      background: #e0f7e9;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .chatbot h3 {
+      color: #2e7d32;
+      margin-bottom: 15px;
+    }
+
+    .chatlog {
+      background: #f4fff8;
+      border: 1px solid #c8e6c9;
+      border-radius: 10px;
+      padding: 15px;
+      height: 300px;
+      overflow-y: auto;
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+    }
+
+    .chatlog div {
+      margin-bottom: 10px;
+    }
+
+    .chat-input {
+      display: flex;
+    }
+
+    .chat-input textarea {
+      flex: 1;
+      resize: none;
+      padding: 10px;
+      border-radius: 8px 0 0 8px;
+      border: 1px solid #a5d6a7;
+      font-size: 0.9rem;
+    }
+
+    .chat-input button {
+      background: #4caf50;
+      border: none;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 0 8px 8px 0;
+      cursor: pointer;
+    }
+
+    @media (max-width: 1000px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .section {
+        min-width: 100%;
+      }
+
+      .chatbot {
+        width: 100%;
+        max-width: 400px;
+        margin-top: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Left Section: Core Features -->
+  <section class="section">
+    <h2>🌱 Core Features</h2>
+   <div class="features">
+  <a href="carbon_calculator.html" target="_blank" class="card">
+    <h3>🧮 Carbon Calculator</h3>
+    <p>Enter your daily activities like food, transport, and electricity use to calculate emissions.</p>
+  </a>
+  <a href="#" class="card" onclick="alert('Bill Scanner: Upload receipts to auto-estimate carbon impact using OCR.')">
+    <h3>📸 Bill Scanner</h3>
+    <p>Upload receipts from food delivery or shopping platforms to auto-calculate carbon impact using OCR.</p>
+  </a>
+  <a href="dashboard.html" target="_blank" class="card">
+    <h3>📊 LowkeyCarbon Dashboard</h3>
+    <p>See your green score, track weekly progress, and get personalized tips.</p>
+  </a>
+  <a href="#" class="card" onclick="alert('Gamified Habits: Earn badges for sustainable actions!')">
+    <h3>🏆 Gamified Habits</h3>
+    <p>Earn streaks and badges for using public transport, saving energy, and eating sustainably.</p>
+  </a>
+</div>
+
+  </section>
+
+  <!-- Right Section: EcoBot -->
+  <div class="chatbot">
+    <h3>💬 EcoBot</h3>
+    <div class="chatlog" id="chatlog">
+      <div>User: How can I reduce my footprint?</div>
+      <div>EcoBot: Try using public transport 3x this week!</div>
+    </div>
+    <div class="chat-input">
+      <textarea rows="2" placeholder="Type your message..." id="userInput"></textarea>
+      <button id="sendBtn">Send</button>
+    </div>
+  </div>
+</div>
+
+<!-- JavaScript -->
+<script>
+  const chatlog = document.getElementById('chatlog');
+  const sendBtn = document.getElementById('sendBtn');
+  const textarea = document.getElementById('userInput');
+
+  function handleUserInput() {
+    const userMsg = textarea.value.trim();
+    if (!userMsg) return;
+
+    const userDiv = document.createElement('div');
+    userDiv.textContent = `User: ${userMsg}`;
+    chatlog.appendChild(userDiv);
+
+    const botDiv = document.createElement('div');
+    let response = '';
+    if (userMsg.toLowerCase().includes('travel')) {
+      response = 'Try biking or using public transport to reduce travel emissions.';
+    } else if (userMsg.toLowerCase().includes('food')) {
+      response = 'Eating plant-based meals can cut down your carbon impact.';
+    } else if (userMsg.toLowerCase().includes('electricity')) {
+      response = 'Unplug devices and switch to LED bulbs to save energy.';
+    } else {
+      response = "I'm here to help! Try asking about travel, food, or electricity.";
+    }
+
+    botDiv.textContent = `EcoBot: ${response}`;
+    chatlog.appendChild(botDiv);
+
+    textarea.value = '';
+    chatlog.scrollTop = chatlog.scrollHeight;
+  }
+
+  sendBtn.addEventListener('click', handleUserInput);
+  textarea.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleUserInput();
+    }
+  });
+</script>
+
+</body>
+</html>

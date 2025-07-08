@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LowKeyCarbon – Calculator</title>
+   <link rel="icon" href="icon.png">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background-color:rgb(179, 242, 179);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 20px;
+      color: #2f2f2f;
+    }
+
+    h2 {
+      margin-bottom: 30px;
+      font-size: 2.2rem;
+      color: #2c3e50;
+      text-shadow:2px 2px 12px solid;
+    }
+
+    .card-container {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+      max-width: 1100px;
+    }
+
+    .card {
+      flex: 1 1 300px;
+      background: rgb(156, 212, 156);
+      border: 1px solid #d3d3d3;
+      border-radius: 16px;
+      box-shadow: 0 0 12px black;
+      padding: 24px;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      color: #37474f;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      background-color: #f9f9f9;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 12px 25px;
+      font-size: 1rem;
+      background-color: #00695c;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #004d40;
+    }
+
+    .result, .tip {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      text-align: center;
+    }
+
+    .tip {
+      color: #37474f;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <h2>LowKeyCarbon – Calculator🌍</h2>
+
+  <div class="card-container">
+    <div class="card">
+      <h3>🚗 Transport</h3>
+      <input type="number" id="distance" placeholder="Transport Distance (km)">
+      <input type="number" id="time" placeholder="Transport Time (min)">
+      <select id="fuel">
+        <option selected disabled>Fuel Type</option>
+        <option value="petrol">Petrol</option>
+        <option value="diesel">Diesel</option>
+        <option value="cng">CNG</option>
+        <option value="electric">Electric</option>
+      </select>
+      <select id="mode">
+        <option selected disabled>Mode</option>
+        <option value="car">Car</option>
+        <option value="bike">Bike</option>
+        <option value="bus">Bus</option>
+        <option value="train">Train</option>
+      </select>
+    </div>
+
+    <div class="card">
+      <h3>♻️ Waste</h3>
+      <input type="number" id="kitchen" placeholder="Kitchen Waste (kg/month)">
+      <input type="number" id="packaging" placeholder="Packaging Waste (kg/month)">
+      <input type="number" id="plastic" placeholder="Plastic Waste (kg/month)">
+      <input type="number" id="paper" placeholder="Paper Waste (kg/month)">
+      <input type="number" id="misc" placeholder="E-waste/Misc (kg/month)">
+    </div>
+
+    <div class="card">
+      <h3>🍗 Food Habits</h3>
+      <input type="number" id="nonveg" placeholder="Non-veg Meals per Day">
+    </div>
+  </div>
+
+  <button onclick="calculateCarbon()">Calculate</button>
+  <div class="result" id="result"></div>
+  <div class="tip" id="tip"></div>
+
+  <script>
+    function calculateCarbon() {
+      const distance = parseFloat(document.getElementById('distance').value) || 0;
+      const time = parseFloat(document.getElementById('time').value) || 0;
+      const fuel = document.getElementById('fuel').value;
+      const mode = document.getElementById('mode').value;
+
+      const kitchen = parseFloat(document.getElementById('kitchen').value) || 0;
+      const packaging = parseFloat(document.getElementById('packaging').value) || 0;
+      const plastic = parseFloat(document.getElementById('plastic').value) || 0;
+      const paper = parseFloat(document.getElementById('paper').value) || 0;
+      const misc = parseFloat(document.getElementById('misc').value) || 0;
+
+      const nonveg = parseFloat(document.getElementById('nonveg').value) || 0;
+
+      let fuelFactor = {
+        petrol: 0.24,
+        diesel: 0.27,
+        cng: 0.18,
+        electric: 0.05
+      }[fuel] || 0;
+
+      let modeFactor = {
+        car: 1,
+        bike: 0.6,
+        bus: 0.3,
+        train: 0.15
+      }[mode] || 0;
+
+      const transportCarbon = distance * fuelFactor * modeFactor;
+      const totalWaste = kitchen + packaging + plastic + paper + misc;
+      const wasteCarbon = totalWaste * 0.1;
+      const foodCarbon = nonveg * 2.5 * 30;
+
+      const totalCarbon = transportCarbon + wasteCarbon + foodCarbon;
+
+      document.getElementById('result').innerText = `🌍 Monthly Carbon Footprint: ${totalCarbon.toFixed(2)} kg CO₂`;
+
+      let tip = '';
+      if (totalCarbon < 150) {
+        tip = "You're a lowkey eco legend 🌿 Keep going!";
+      } else if (totalCarbon < 350) {
+        tip = "Pretty cool 🌍 Try reducing meat & packaging waste.";
+      } else {
+        tip = "Let’s green it up! ✨ Use less plastic & go veg 2x a week.";
+      }
+
+      document.getElementById('tip').innerText = tip;
+    }
+  </script>
+</body>
+</html>
